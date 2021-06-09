@@ -10,7 +10,7 @@ def Markov_chain(A,n):
         if A[i,i]==0.0:
             sys.exit("Can't divide by 0")
         for j in range(i+1,n):
-            ratio=A[i,j]/A[i,i]
+            ratio=A[j,i]/A[i,i]
             for k in range(n+1):
                 A[j,k] = A[j,k] - (ratio * A[i,k])
     x[A.shape[0]-1]=A[A.shape[0]-1,A.shape[0]]/A[A.shape[0]-1,A.shape[0]-1]
@@ -30,9 +30,9 @@ def get_matrixA(m_len,variable_type=float):
     B=[]
     M=[]
     n=m_len+1
-    for i in range(1,n+1):
-        for j in range(1,n):
-            if i == n:
+    for i in range(1,n):
+        for j in range(1,n+1):
+            if j== n:
                 k+=1
                 m_col_row = float(input("enter value for \n b" + str(k) + "::"))
                 A.append(m_col_row)
@@ -49,6 +49,7 @@ def get_matrixA(m_len,variable_type=float):
     print(B)
 
     A=np.array(A).reshape(n-1,n)
+    print(A)
     return A
 
 
